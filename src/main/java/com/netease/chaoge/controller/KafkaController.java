@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @data 2019/07/31
  */
 @RestController
+@RequestMapping("/kafka")
 public class KafkaController {
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    @RequestMapping("/send")
+    @RequestMapping("/sendMessage")
     public String send(String message) {
         kafkaTemplate.send("mytopic", message);
         return message;
